@@ -2,4 +2,4 @@ export default class CalculatorController {
     constructor() {
     }
 }
-//# sourceMappingURL=CalculadoraController.js.map
+//# sourceMappingURL=CalculatorController.js.map
