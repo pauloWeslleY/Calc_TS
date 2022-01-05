@@ -1,8 +1,9 @@
 import DateHour from "./DateHour.js";
-import Screen from './Screen.js'
+import Operation from "./Operation.js";
+import Screen from './Screen.js';
 
 export default class CalculatorController {
-   constructor(private screen = new Screen()) {
+   constructor(private screen = new Screen(), private operation = new Operation()) {
       new DateHour();
       this.eventButtons();
    }
@@ -28,7 +29,7 @@ export default class CalculatorController {
                case "subtracao":
                case "divisao":
                case "multiplicacao":
-
+                  this.addOperator(<string>target.dataset.valor);
                   break;
                case "ponto":
 
@@ -53,7 +54,17 @@ export default class CalculatorController {
       });
    }
 
+   addOperation(value: string): void {
+      this.operation.add(value);
+      console.log(this.operation.length);
+   }
+
    addNumber(numbers:  number): void {
       this.screen.content = numbers.toString();
+      this.addOperation(numbers.toString());
+   }
+
+   addOperator(operator: string): void {
+      this.addOperation(operator);
    }
 }
