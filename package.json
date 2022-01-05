@@ -30,5 +30,8 @@
   "bugs": {
     "url": "https://github.com/pauloWeslleY/Calc_TS/issues"
   },
-  "homepage": "https://github.com/pauloWeslleY/Calc_TS#readme"
+  "homepage": "https://github.com/pauloWeslleY/Calc_TS#readme",
+  "dependencies": {
+    "browser-sync": "^2.27.7"
+  }
 }
