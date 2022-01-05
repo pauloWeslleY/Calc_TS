@@ -58,8 +58,14 @@ export default class CalculatorController {
         console.log(this.operation.length);
     }
     addNumber(numbers) {
+        if (isNaN(Number(this.operation.lastPosition))) {
+            this.addOperation(numbers.toString());
+        }
+        else {
+            numbers = Number(this.operation.lastPosition.toString() + numbers.toString());
+            this.operation.lastPosition = numbers.toString();
+        }
         this.screen.content = numbers.toString();
-        this.addOperation(numbers.toString());
     }
     addOperator(operator) {
         this.addOperation(operator);
