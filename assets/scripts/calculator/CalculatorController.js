@@ -2,7 +2,9 @@ import DateHour from "./DateHour.js";
 import Operation from "./Operation.js";
 import Screen from './Screen.js';
 export default class CalculatorController {
-    constructor(screen = new Screen(), operation = new Operation()) {
+    constructor(screen = new Screen(), operation = new Operation({
+        onCalculate: (result) => this.screen.content = result
+    })) {
         this.screen = screen;
         this.operation = operation;
         new DateHour();
@@ -40,12 +42,16 @@ export default class CalculatorController {
                     case "porcentagem":
                         break;
                     case "igual":
+                        this.calc();
                         break;
                     default:
                         break;
                 }
             });
         });
+    }
+    calc() {
+        this.operation.calculate();
     }
     addOperation(value) {
         this.operation.add(value);

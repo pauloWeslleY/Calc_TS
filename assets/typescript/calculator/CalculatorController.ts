@@ -3,7 +3,12 @@ import Operation from "./Operation.js";
 import Screen from './Screen.js';
 
 export default class CalculatorController {
-   constructor(private screen = new Screen(), private operation = new Operation()) {
+   constructor(
+      private screen = new Screen(),
+      private operation = new Operation({
+         onCalculate: (result: string) => this.screen.content = result
+      })
+   ) {
       new DateHour();
       this.eventButtons();
    }
@@ -44,7 +49,7 @@ export default class CalculatorController {
 
                   break;
                case "igual":
-
+                  this.calc();
                   break;
 
                default:
@@ -52,6 +57,10 @@ export default class CalculatorController {
             }
          });
       });
+   }
+
+   calc(): void {
+      this.operation.calculate();
    }
 
    addOperation(value: string): void {
