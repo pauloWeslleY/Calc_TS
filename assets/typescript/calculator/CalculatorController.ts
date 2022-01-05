@@ -79,6 +79,13 @@ export default class CalculatorController {
    }
 
    addOperator(operator: string): void {
-      this.addOperation(operator);
+      if (isNaN(Number(this.operation.lastPosition))) {
+         this.operation.lastPosition = operator;
+      } else {
+         if (this.operation.length === 0) {
+            this.addOperation("0");
+         }
+         this.addOperation(operator);
+      }
    }
 }

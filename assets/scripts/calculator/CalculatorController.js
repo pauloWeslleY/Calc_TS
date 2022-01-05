@@ -68,7 +68,15 @@ export default class CalculatorController {
         this.screen.content = numbers.toString();
     }
     addOperator(operator) {
-        this.addOperation(operator);
+        if (isNaN(Number(this.operation.lastPosition))) {
+            this.operation.lastPosition = operator;
+        }
+        else {
+            if (this.operation.length === 0) {
+                this.addOperation("0");
+            }
+            this.addOperation(operator);
+        }
     }
 }
 //# sourceMappingURL=CalculatorController.js.map
